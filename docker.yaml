@@ -1,0 +1,30 @@
+docker run --name postgres-0 -e POSTGRES_PASSWORD=password -d -p 5432:5432 postgres:alpine
+docker rm -f postgres-0
+docker ps
+docker inspect postgres-0
+docker pull postgres:alpine
+docker rmi postgres:alpine
+ docker image ls
+ docker start postgres-0
+ docker rm -f postgres-0
+ docker rm -f 4ded6c4b0157
+ docker pull postgres:alpine
+ docker run --name redsite -d -p 8080:80 ettasr007/redsite
+ docker rmi -f 942c709a8210
+ docker push ettasr007/redsite:latest
+ docker build -t reds-website:latest .
+  docker ps --format  ${format}
+docker run --name website -d -p 8080:80 reds-website:1
+
+
+psql  -h localhost -p 5432 -U postgres
+docker exec -it postgres-0 bash
+
+
+env format="ID\t{{.ID}}\nNAME\t{{.Names}}\nImage\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n"
+
+
+docker compose up -d
+
+docker compose down
+
