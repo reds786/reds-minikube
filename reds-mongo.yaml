@@ -52,4 +52,25 @@ spec:
               valueFrom: 
                secretKeyRef:
                 name: mongodb-secret
-                key: mongo-root-password       
+                key: mongo-root-password     
+                
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: book-ingress
+spec:
+  rules:
+  - host: reds-mongo.minikube.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: reds-mongo
+            port:
+              number: 8080
+                
+ 
